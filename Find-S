@@ -1,0 +1,30 @@
+import csv
+def updatehypothesis(x,h):
+    if h==[]:
+        return x
+    for i in range(0,len(h)):
+        if x[i].upper()!=h[i].upper():
+            h[i]='?'
+    return h
+data=[]
+h=[]
+add Codeadd Markdown
+with open('/kaggle/input/find-s-algorithm-dataset/ws.csv','r') as csvfile:
+    reader=csv.reader(csvfile)
+    print("Data:")
+    for row in reader:
+        data.append(row)
+        print(row)
+if data:
+    for x in data:
+        if x[-1].upper()=="YES":
+            x.pop()
+            h=updatehypothesis(x,h)
+print("Hypothesis: ",h)
+    
+Data:
+['Sunny', 'Warm', 'Normal', 'Strong', 'Warm', 'Same', 'Yes']
+['Sunny', 'Warm', 'High', 'Strong', 'Warm', 'Same', 'Yes']
+['Rainy', 'Cold', 'High', 'Strong', 'Warm', 'Change', 'No']
+['Sunny', 'Warm', 'High', 'Strong', 'Cool', 'Change', 'Yes']
+Hypothesis:  ['Sunny', 'Warm', '?', 'Strong', '?', '?']
